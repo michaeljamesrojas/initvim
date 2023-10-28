@@ -44,9 +44,10 @@ nnoremap <leader>riwc "_diw"+p
 nnoremap <leader>riWc "_diW"+p
 
 
-cnoremap ahkcom !start ahk2exe /in %
+cnoremap ahkcom !taskkill /IM %:t:r.exe <Bar> start ahk2exe /in %
 cnoremap ahkexe !start %<BS><BS><BS>exe
-cnoremap editinit edit $MYVIMRC
+cnoremap ahkahk !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 2 > nul &&  start %<BS><BS><BS>exe
+cnoremap editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim
 
 nnoremap <leader>tdd _i---
 nnoremap <leader>tdu _xxx
