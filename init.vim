@@ -66,7 +66,7 @@ function! GitCommitPreType()
 	call feedkeys(':termigit commit -m "', 'n')
 endfunction
 function! GitPushPreType()
-	call feedkeys(':termigit push"', 'n')
+	call feedkeys(':termigit push', 'n')
 endfunction
 
 command! ShowCommands :call ShowAllAHKCommands()
