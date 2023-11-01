@@ -46,21 +46,25 @@ nnoremap <leader>riWc "_diW"+p
 
 cnoremap ahkcom !taskkill /IM %:t:r.exe <Bar> start ahk2exe /in %
 cnoremap ahkexe !start %<BS><BS><BS>exe
-cnoremap ahkahk !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 3 > nul &&  start %<BS><BS><BS>exe
-cnoremap editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim
-cnoremap showcommands g/userInput = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
+cnoremap ahkahk !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 3 > nul &&  start %<BS><BS><BS>exe<CR>
+cnoremap editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> bd $myvimrc
+cnoremap showcommands g/command = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
 
 nnoremap <leader>tdd _i---
 nnoremap <leader>tdu _xxx
 
 
-function! TriggerCommandModeRemap()
+function! ShowAllAHKCommands()
 	call feedkeys(':!del hahaho.txt', 'n')
-	call feedkeys(':e ahkvim.ahk | g/userInput = "/ normal yi":e hahaho.txtGop:w:bd', 'n')
+	call feedkeys(':e ahkvim.ahk | g/command = "/ normal yi":e hahaho.txtGop:w:bd', 'n')
 	call feedkeys(':e hahaho.txt', 'n')
 endfunction
+function! EditMyInitVim()
+	call feedkeys(':edit $myvimrc | edit %:p:h/initvim/init.vim | execute "bd " . expand($myvimrc)', 'n')
+endfunction
 
-command! ShowCommands :call TriggerCommandModeRemap()
+command! ShowCommands :call ShowAllAHKCommands()
+command! EditInit :call EditMyInitVim()
 
 
 
