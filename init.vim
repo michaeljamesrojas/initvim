@@ -16,6 +16,8 @@ nnoremap <leader>ndtr :NERDTree<CR>
 nnoremap <leader>ndto :NERDTreeToggle<CR>
 nnoremap <leader>ndfi :NERDTreeFind<CR>
 
+nnoremap <leader>sa ggVG
+
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>p "+p
@@ -38,8 +40,8 @@ vnoremap <leader>k 10k
 "nnoremap <leader>ki 15k
 "vnoremap <leader>kk 15k
 
-nnoremap <leader>riw "_diwP
-nnoremap <leader>riW "_diWP
+nnoremap <leader>riw viwA@hdiwPl"_x
+nnoremap <leader>riW viWA@hdiWhPl"_x
 nnoremap <leader>riwc "_diw"+p
 nnoremap <leader>riWc "_diW"+p
 
