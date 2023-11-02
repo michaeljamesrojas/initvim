@@ -43,6 +43,9 @@ nnoremap <leader>riW "_diWP
 nnoremap <leader>riwc "_diw"+p
 nnoremap <leader>riWc "_diW"+p
 
+nnoremap <leader>o o<Esc>k
+nnoremap <leader>O O<Esc>j
+
 
 cnoremap ahkcom !taskkill /IM %:t:r.exe <Bar> start ahk2exe /in %
 cnoremap ahkexe !start %<BS><BS><BS>exe
