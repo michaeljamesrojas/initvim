@@ -43,15 +43,15 @@ nnoremap <leader>riW "_diWP
 nnoremap <leader>riwc "_diw"+p
 nnoremap <leader>riWc "_diW"+p
 
-nnoremap <leader>o o<Esc>k
-nnoremap <leader>O O<Esc>j
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
 
 
 cnoremap <leader>ahkcom !taskkill /IM %:t:r.exe <Bar> start ahk2exe /in %
 cnoremap <leader>ahkexe !start %<BS><BS><BS>exe
 cnoremap <leader>ahkahk !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 3 > nul &&  start %<BS><BS><BS>exe
 cnoremap <leader>wahk w <Bar> !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 3 > nul &&  start %<BS><BS><BS>exe
-cnoremap <leader>editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> bd $myvimrc
+cnoremap <leader>editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> execute "bd " . expand($myvimrc)
 cnoremap <leader>showcommands g/command = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
 
 nnoremap <leader>tdd _i---
