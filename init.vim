@@ -47,12 +47,12 @@ nnoremap <leader>o o<Esc>k
 nnoremap <leader>O O<Esc>j
 
 
-cnoremap ahkcom !taskkill /IM %:t:r.exe <Bar> start ahk2exe /in %
-cnoremap ahkexe !start %<BS><BS><BS>exe
-cnoremap ahkahk !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 3 > nul &&  start %<BS><BS><BS>exe
-cnoremap wahk w <Bar> !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 3 > nul &&  start %<BS><BS><BS>exe
-cnoremap editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> bd $myvimrc
-cnoremap showcommands g/command = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
+cnoremap <leader>ahkcom !taskkill /IM %:t:r.exe <Bar> start ahk2exe /in %
+cnoremap <leader>ahkexe !start %<BS><BS><BS>exe
+cnoremap <leader>ahkahk !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 3 > nul &&  start %<BS><BS><BS>exe
+cnoremap <leader>wahk w <Bar> !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in % <Bar> ping 127.0.0.1 -n 3 > nul &&  start %<BS><BS><BS>exe
+cnoremap <leader>editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> bd $myvimrc
+cnoremap <leader>showcommands g/command = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
 
 nnoremap <leader>tdd _i---
 nnoremap <leader>tdu _xxx
