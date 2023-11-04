@@ -23,6 +23,9 @@ vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
+nnoremap <leader>tdmtd ddmmGpG`m
+vnoremap <leader>tdmtd dmmGpG`m
+
 nnoremap <leader>Y "+Y
 vnoremap <leader>Y "+Y
 nnoremap <leader>P "+P
@@ -39,6 +42,8 @@ nnoremap <leader>k 10k
 vnoremap <leader>k 10k
 "nnoremap <leader>ki 15k
 "vnoremap <leader>kk 15k
+
+vnoremap <leader>sp "_dP
 
 nnoremap <leader>riw viwA@hdiwPl"_x
 nnoremap <leader>riW viWA@hdiWhPl"_x
@@ -57,7 +62,22 @@ cnoremap <leader>editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> 
 cnoremap <leader>showcommands g/command = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
 
 nnoremap <leader>tdd _i---
+nnoremap <leader>tdc _i-c-
 nnoremap <leader>tdu _xxx
+
+
+function! ConfirmExit()
+  "let choice = confirm("Make Session?", "&Yes\n&No", 1)
+  "if choice == 1
+    echom "Running mks!"
+    execute "mks!"
+    sleep 1
+  "else
+  "  echom "Exit canceled."
+  "endif
+endfunction
+
+autocmd VimLeavePre ahkvim.ahk call ConfirmExit()
 
 
 function! ShowAllAHKCommands()
