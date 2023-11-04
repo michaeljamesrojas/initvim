@@ -79,6 +79,10 @@ command! ShowCommands :call ShowAllAHKCommands()
 command! EditInit :call EditMyInitVim()
 
 
+set undofile
+let undo_dir = expand('%:p:h:h').'/undo'
+exe 'set undodir='.undo_dir
+
 
 call plug#begin()
 
