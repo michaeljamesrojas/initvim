@@ -11,6 +11,11 @@ set ic
 "MAPPINGS
 
 let mapleader = " "
+let g:tdtexttd = "_t__:"
+let g:tdtextdone = "_d__:"
+let g:tdtextcancel = "_c__:"
+let g:tdtextpattern = "_.__:"
+
 nnoremap <leader>ndfo :NERDTreeFocus<CR>
 nnoremap <leader>ndtr :NERDTree<CR>
 nnoremap <leader>ndto :NERDTreeToggle<CR>
@@ -22,9 +27,6 @@ nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
-
-nnoremap <leader>tdmtd ddmmGpG`m
-vnoremap <leader>tdmtd dmmGpG`m
 
 nnoremap <leader>Y "+Y
 vnoremap <leader>Y "+Y
@@ -61,9 +63,15 @@ cnoremap <leader>wahk w <Bar> !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in
 cnoremap <leader>editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> execute "bd " . expand($myvimrc)
 cnoremap <leader>showcommands g/command = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
 
-nnoremap <leader>tdd _i---
-nnoremap <leader>tdc _i-c-
-nnoremap <leader>tdu _xxx
+nnoremap <leader>td<leader> mm:call TDRemoveMark():call TDRemoveTDMarks()'m0:put=tdtexttdddkPA<Del>0
+nnoremap <leader>tdd mm:call TDRemoveMark()'m0:put=tdtextdoneddkPA<Del>0
+nnoremap <leader>tdc mm:call TDRemoveMark()'m0:put=tdtextcancelddkPA<Del>0
+nnoremap <leader>tdu :call TDRemoveMark()
+nnoremap <leader>tdf :let @/=g:tdtexttd
+nnoremap <leader>tdmtd ddmmGpG`m
+vnoremap <leader>tdmtd dmmGpG`m
+
+
 
 
 function! ConfirmExit()
@@ -80,23 +88,39 @@ endfunction
 autocmd VimLeavePre ahkvim.ahk call ConfirmExit()
 
 
+function! TDFindTD()
+	execute '/' . g:tdtexttd 
+endfunction
+
+function! TDRemoveTDMarks()
+	execute ':%s/' . g:tdtexttd . '//ge'
+endfunction
+
+function! TDRemoveMark()
+	execute ':s/' . g:tdtextpattern . '//e'
+endfunction
+
 function! ShowAllAHKCommands()
 	call feedkeys(':!del hahaho.txt', 'n')
 	call feedkeys(':e ahkvim.ahk | g/command = "/ normal yi":e hahaho.txtGop:w:bd', 'n')
 	call feedkeys(':e hahaho.txt', 'n')
 endfunction
+
 function! EditMyInitVim()
 	call feedkeys(':edit $myvimrc | edit %:p:h/initvim/init.vim | execute "bd " . expand($myvimrc)', 'n')
 endfunction
+
 function! GitCommitPreType()
 	call feedkeys(':termigit commit -m "', 'n')
 endfunction
+
 function! GitPushPreType()
 	call feedkeys(':termigit push', 'n')
 endfunction
 
 command! ShowCommands :call ShowAllAHKCommands()
 command! EditInit :call EditMyInitVim()
+
 
 
 set undofile
