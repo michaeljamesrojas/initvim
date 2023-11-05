@@ -11,7 +11,7 @@ set ic
 "MAPPINGS
 
 let mapleader = " "
-let g:tdtexttd = "_t__:"
+let g:tdtexttd = "_>__:"
 let g:tdtextdone = "_d__:"
 let g:tdtextcancel = "_c__:"
 let g:tdtextpattern = "_.__:"
@@ -35,6 +35,8 @@ vnoremap <leader>P "+P
 
 nnoremap <leader>b "_
 vnoremap <leader>b "_
+nnoremap <leader>c "+
+vnoremap <leader>c "+
 
 nnoremap <leader>j 10j
 vnoremap <leader>j 10j
@@ -45,6 +47,7 @@ vnoremap <leader>k 10k
 "nnoremap <leader>ki 15k
 "vnoremap <leader>kk 15k
 
+vnoremap <leader>sP "_dP
 vnoremap <leader>sp "_dP
 
 nnoremap <leader>riw viwA@hdiwPl"_x
@@ -63,13 +66,13 @@ cnoremap <leader>wahk w <Bar> !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in
 cnoremap <leader>editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> execute "bd " . expand($myvimrc)
 cnoremap <leader>showcommands g/command = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
 
-nnoremap <leader>td<leader> mm:call TDRemoveMark():call TDRemoveTDMarks()'m0:put=tdtexttdddkPA<Del>0
-nnoremap <leader>tdd mm:call TDRemoveMark()'m0:put=tdtextdoneddkPA<Del>0
-nnoremap <leader>tdc mm:call TDRemoveMark()'m0:put=tdtextcancelddkPA<Del>0
-nnoremap <leader>tdu :call TDRemoveMark()
-nnoremap <leader>tdf :let @/=g:tdtexttd
-nnoremap <leader>tdmtd ddmmGpG`m
-vnoremap <leader>tdmtd dmmGpG`m
+nnoremap <leader>tdmn mm:call TDRemoveMark():call TDRemoveTDMarks()'m_:let @"=g:tdtexttd:normal P`m:w
+nnoremap <leader>tdmd mm:call TDRemoveMark()'m_:let @"=g:tdtextdone:normal P`m:w
+nnoremap <leader>tdmc mm:call TDRemoveMark()'m_:let @"=g:tdtextcancel:normal P`m:w
+nnoremap <leader>tdmu mm:call TDRemoveMark()`m:w
+nnoremap <leader>tdf mm:let @/=g:tdtexttd . ".*"nzz
+nnoremap <leader>tdmtd ddmmGpG`m:w
+vnoremap <leader>tdmtd dmmGpG`m:w
 
 
 
