@@ -15,6 +15,7 @@ let g:tdtexttd = "_>__:"
 let g:tdtextdone = "_d__:"
 let g:tdtextcancel = "_c__:"
 let g:tdtextpattern = "_.__:"
+let g:tdsectionpattern = ".*important.*urgent.*"
 
 nnoremap <leader>ndfo :NERDTreeFocus<CR>
 nnoremap <leader>ndtr :NERDTree<CR>
@@ -66,11 +67,14 @@ cnoremap <leader>wahk w <Bar> !taskkill /F /IM %:t:r.exe <Bar> start ahk2exe /in
 cnoremap <leader>editinit edit $myvimrc <Bar> edit %:p:h/initvim/init.vim <Bar> execute "bd " . expand($myvimrc)
 cnoremap <leader>showcommands g/command = "/ normal yi":e hahaho.txt<C-v><CR>Go<C-v><Esc>p:w<C-v><CR>:bd<C-v><CR> 
 
-nnoremap <leader>tdmn mm:call TDRemoveMark():call TDRemoveTDMarks()'m_:let @"=g:tdtexttd:normal P`m:w
+nnoremap <leader><leader> mm:call TDRemoveMark():call TDRemoveTDMarks()'m_:let @"=g:tdtexttd:normal P`m:w
 nnoremap <leader>tdmd mm:call TDRemoveMark()'m_:let @"=g:tdtextdone:normal P`m:w
 nnoremap <leader>tdmc mm:call TDRemoveMark()'m_:let @"=g:tdtextcancel:normal P`m:w
 nnoremap <leader>tdmu mm:call TDRemoveMark()`m:w
-nnoremap <leader>tdf mm:let @/=g:tdtexttd . ".*"nzz
+nnoremap <leader>tdfn mm:let @/=g:tdtexttd . ".*"n
+nnoremap <leader>tdfm mm:let @/=g:tdtextpattern . ".*"`m
+nnoremap <leader>tdfs mm:let @/=g:tdsectionpattern . ".*"`m
+
 nnoremap <leader>tdmtd ddmmGpG`m:w
 vnoremap <leader>tdmtd dmmGpG`m:w
 
