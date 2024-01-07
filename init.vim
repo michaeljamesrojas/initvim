@@ -74,6 +74,7 @@ nnoremap <leader>tdmu mm:call TDRemoveMark()`m:w
 nnoremap <leader>tdfn mm:let @/=g:tdtexttd . ".*"n
 nnoremap <leader>tdfm mm:let @/=g:tdtextpattern . ".*"`m
 nnoremap <leader>tdfs mm:let @/=g:tdsectionpattern . ".*"`m
+nnoremap <leader>tdnd ggO......................................
 
 nnoremap <leader>tdmtd ddmmGpG`m:w
 vnoremap <leader>tdmtd dmmGpG`m:w
@@ -123,6 +124,88 @@ endfunction
 
 function! GitPushPreType()
 	call feedkeys(':termigit push', 'n')
+endfunction
+
+function! GuessTheNumber() abort
+    let target = rand(1, 100)
+    let guess = 0
+
+    echo "Welcome to Guess the Number!"
+    echo "I'm thinking of a number between 1 and 100."
+
+    while guess != target
+        let guess = input("Take a guess: ")
+        if guess < target
+            echo "Too low!"
+        elseif guess > target
+            echo "Too high!"
+        else
+            echo "Congratulations! You guessed the number!"
+        endif
+    endwhile
+
+    echo "Thanks for playing!"
+endfunction
+
+function! StartGame()
+  " Set up game variables
+  let words = ['apple', 'banana', 'cherry', 'date', 'elderberry']
+  let score = 0
+
+  " Loop through the words
+  for word in words
+    " Display the current word
+    echo 'Type the word: ' . word
+
+    " Read user input
+    let userInput = input('')
+    redraw!
+
+    " Check if the input matches the word
+    if userInput == word
+      echo 'Correct!'
+      let score += 1
+    else
+      echo 'Wrong!'
+    endif
+  endfor
+
+  " Display final score
+  echo 'Game Over! Your score: ' . score
+endfunction
+
+function! StartGame2()
+  " Set up game variables
+  let words = ['apple', 'banana', 'cherry', 'date', 'elderberry']
+  let score = 0
+
+  " Clear the buffer
+  %delete _
+
+  " Loop through the words
+  for word in words
+    " Display the current word
+    put = 'Type the word: ' . word
+
+    " Position the cursor for input
+    normal! G$
+
+    " Read user input
+    redraw!
+    let userInput = input('')
+    redraw!
+
+    " Check if the input matches the word
+    if userInput == word
+      put = 'Correct!'
+      let score += 1
+    else
+      put = 'Wrong!'
+    endif
+  endfor
+
+  " Display final score
+  put = 'Game Over! Your score: ' . score
 endfunction
 
 command! ShowCommands :call ShowAllAHKCommands()
